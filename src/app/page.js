@@ -33,6 +33,11 @@ export default async function Home() {
           </a>{" "}
           for now
         </p>
+        <p>Or visit The blog page!</p>
+        <p> </p>
+        <Button asChild>
+          <a href="/blog">Blog</a>
+        </Button>
       </div>
     </>
   );
