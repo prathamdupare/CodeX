@@ -68,12 +68,11 @@ export async function POST(req) {
       image: image_url,
     };
     console.log(user);
-    await connectToDb();
 
     await updateUser();
-    const NewUser = await User.create(user);
+    //    const NewUser = await User.create(user);
 
-    if (NewUser) {
+    /*   if (NewUser) {
       await clerkClient.users.update(NewUser.id, {
         metadata: {
           user_id: NewUser.id,
@@ -86,10 +85,12 @@ export async function POST(req) {
       status: 200,
       user: NewUser,
     });
+
+    */
   }
 
   console.log(`Webhook with and ID of ${id} and type of ${eventType}`);
   console.log("Webhook body:", body);
 
-  return new Response("", { status: 200 });
+  return new Response("This webhook worked successfully ", { status: 200 });
 }

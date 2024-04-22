@@ -6,8 +6,8 @@ export const updateUser = async () => {
   try {
     await connectToDb();
     await User.create({
-      id: "some random id",
-      name: "John Doe",
+      id: " fdsafskldj  some random id",
+      name: "John Doei dfasdf  ",
       email: "some random email ",
       isPro: false,
       courses: [],
