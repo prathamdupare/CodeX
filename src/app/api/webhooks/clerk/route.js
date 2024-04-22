@@ -70,7 +70,6 @@ export async function POST(req) {
     console.log(user);
     await connectToDb();
 
-    await updateUser();
     const NewUser = await User.create(user);
 
     if (NewUser) {
