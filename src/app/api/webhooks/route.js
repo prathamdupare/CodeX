@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import { WebhookEvent, clerkClient } from "@clerk/nextjs/server";
 import User from "@/lib/models/userModel";
 import connectToDb from "@/lib/mongoDB/connectToDb";
+import { updateUser } from "@/lib/actions/user.actions";
 
 export async function POST(req) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
@@ -69,6 +70,7 @@ export async function POST(req) {
     console.log(user);
     await connectToDb();
     const NewUser = await User.create(user);
+    await updateUser();
 
     if (NewUser) {
       await clerkClient.users.update(NewUser.id, {
