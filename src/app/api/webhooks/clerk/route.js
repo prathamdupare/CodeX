@@ -5,6 +5,7 @@ import { WebhookEvent, clerkClient } from "@clerk/nextjs/server";
 import User from "@/lib/models/userModel";
 import connectToDb from "@/lib/mongoDB/connectToDb";
 import { updateUser } from "@/lib/actions/user.actions";
+import { NextResponse } from "next/server";
 
 export async function POST(req) {
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
