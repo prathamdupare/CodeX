@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import { currentUser } from "@clerk/nextjs/server";
+import { updateUser } from "@/lib/actions/user.actions";
+import { Button } from "@/components/ui/button";
 export default async function Home() {
   const user = await currentUser();
 

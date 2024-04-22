@@ -1,14 +1,11 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 import { ClerkProvider } from "@clerk/nextjs";
-
-export const metadata = {
-  title: "CodeX Courses",
-  description: "Learn to code with CodeX Courses",
-};
+import Navbar from "../components/Navbar";
+import { Button } from "@/components/ui/button";
+import { updateUser } from "@/lib/actions/user.actions";
 
 export default function RootLayout({ children }) {
   return (

@@ -1,8 +1,9 @@
+"use client";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { ModeToggle } from "./mode-toggle";
 import { Button } from "./ui/button";
 
-const Navbar = async () => {
+const Navbar = () => {
   return (
     <div className="w-full bg-background flex items-center justify-between px-3 shadow mb-2 py-2 ">
       <div>
