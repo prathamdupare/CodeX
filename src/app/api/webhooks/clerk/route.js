@@ -74,9 +74,9 @@ export async function POST(req) {
     const NewUser = await User.create(user);
 
     if (NewUser) {
-      await clerkClient.users.update(NewUser.id, {
-        metadata: {
-          user_id: NewUser.id,
+      await clerkClient.users.updateUserMetadata(id, {
+        publicMetadata: {
+          userId: NewUser._id,
         },
       });
       console.log("User created in MongoDB");
