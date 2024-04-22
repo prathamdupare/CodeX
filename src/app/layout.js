@@ -1,3 +1,4 @@
+"use client";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
             disableTransitionOnChange
           >
             <Navbar />
+            <Button onClick={() => updateUser()}>createuser</Button>
             {children}
           </ThemeProvider>
         </body>

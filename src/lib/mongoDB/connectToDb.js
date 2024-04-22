@@ -1,3 +1,4 @@
+"use server";
 const { default: mongoose } = require("mongoose");
 const connection = {};
 
