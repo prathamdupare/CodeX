@@ -16,7 +16,7 @@ export async function POST(req) {
     );
   }
 
-  // Get the headers
+  // Get the headershttps://courses.codex.fosspage.com/
   const headerPayload = headers();
   const svix_id = headerPayload.get("svix-id");
   const svix_timestamp = headerPayload.get("svix-timestamp");
@@ -65,7 +65,7 @@ export async function POST(req) {
     const user = {
       id,
       name: firstName + " " + lastName,
-      email: email_addresses[0].email,
+      email: email_addresses[0].email_address,
       image: image_url,
     };
     console.log(user);
