@@ -60,12 +60,12 @@ export async function POST(req) {
   // Create user in mongodb  wiht User model
 
   if (eventType === "user.created") {
-    const { id, email_addresses, image_url, firstName, lastName, username } =
+    const { id, email_addresses, image_url, first_name, last_name, username } =
       evt.data;
 
     const user = {
       id,
-      name: firstName + " " + lastName,
+      name: first_name + " " + last_name,
       email: email_addresses[0].email_address,
       image: image_url,
     };
