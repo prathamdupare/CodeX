@@ -69,8 +69,9 @@ export async function POST(req) {
     };
     console.log(user);
     await connectToDb();
-    const NewUser = await User.create(user);
+
     await updateUser();
+    const NewUser = await User.create(user);
 
     if (NewUser) {
       await clerkClient.users.update(NewUser.id, {
