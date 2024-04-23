@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { enrollCourse, publishCourse } from "@/app/services";
 
 const EnrollmentSection = ({ coursedetail, userCourse }) => {
+  console.log(userCourse, coursedetail);
   const { user } = useUser();
   const router = useRouter();
   const EnrollCourse = async () => {
@@ -18,6 +19,9 @@ const EnrollmentSection = ({ coursedetail, userCourse }) => {
           await publishCourse(res?.createUserEnrollSchema?.id).then(
             (result) => {
               console.log(result);
+              if (result) {
+                router.push(`/view-course/${coursedetail.id}`);
+              }
             },
           );
         }
@@ -36,27 +40,32 @@ const EnrollmentSection = ({ coursedetail, userCourse }) => {
           </CardTitle>
         </CardHeader>
         <CardFooter className="flex flex-col gap-2">
-          {userCourse?.courseId && (
+          {userCourse?.courseId ? (
             <div className="w-full">
-              <Button onClick={() => {}} className="w-full">
+              <Button
+                onClick={() => {
+                  router.push(`/view-course/${coursedetail.id}`);
+                }}
+                className="w-full"
+              >
                 Continue
               </Button>
             </div>
-          )}
+          ) : null}
 
-          {coursedetail.free ? (
+          {coursedetail.free && !userCourse?.courseId ? (
             <div className="w-full">
               <Button onClick={() => EnrollCourse()} className="w-full">
                 Enroll Now
               </Button>
             </div>
-          ) : (
+          ) : !userCourse?.courseId ? (
             <div className="w-full">
               <Button onClick={() => EnrollCourse()} className="w-full">
                 Buy all courses for $5.99/month
               </Button>
             </div>
-          )}
+          ) : null}
         </CardFooter>
       </Card>
     </div>

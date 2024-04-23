@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 
 const Navbar = () => {
   return (
-    <div className="w-full bg-background flex items-center justify-between px-3 shadow mb-2 py-2 ">
+    <div className="w-full fixed shadow bg-background border-b flex items-center justify-between px-3 shadow mb-2 py-2 ">
       <div className="text-[25px]">
         <a
           href="https://codex.fosspage.com/"

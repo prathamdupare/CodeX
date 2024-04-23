@@ -2,9 +2,11 @@
 import { useEffect, useState } from "react";
 import { getCourseList } from "../services";
 import CourseList from "@/components/coursesComponents/CourseList";
+import { Divide } from "lucide-react";
 
 const Page = () => {
   const [courses, setCourses] = useState([]);
+
   useEffect(() => {
     getCourses();
   }, []);
@@ -14,12 +16,7 @@ const Page = () => {
       setCourses(res.courseLists);
     });
   };
-  return (
-    <>
-      <div>page</div>
-      {courses ? <CourseList courses={courses} /> : null}
-    </>
-  );
+  return <div>{courses ? <CourseList courses={courses} /> : null}</div>;
 };
 
 export default Page;

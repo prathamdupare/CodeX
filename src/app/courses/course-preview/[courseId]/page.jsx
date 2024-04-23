@@ -31,9 +31,9 @@ const CoursePreview = ({ params }) => {
 
   return (
     coursedetail?.name && (
-      <div className="">
+      <div className="mx-3">
         <div className="grid grid-cols-1 md:grid-cols-3">
-          <div className="col-span-2 border rounded-lg p-3 ">
+          <div className="col-span-2 p-5 border rounded-lg p-3 ">
             {coursedetail?.chapter[0] ? (
               <VideoPlayer videoUrl={coursedetail?.chapter[0].video.url} />
             ) : null}
