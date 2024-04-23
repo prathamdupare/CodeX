@@ -20,8 +20,7 @@ export default function RootLayout({ children }) {
             disableTransitionOnChange
           >
             <Navbar />
-            <Button onClick={() => updateUser()}>createuser</Button>
-            {children}
+            <div className="m-5">{children}</div>
           </ThemeProvider>
         </body>
       </html>

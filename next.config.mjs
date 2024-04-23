@@ -3,6 +3,9 @@
 import nextra from "nextra";
 
 const nextConfig = {
+  images: {
+    domains: ["ap-south-1.graphassets.com"],
+  },
   typescript: {
     // !! WARN !!
     // Dangerously allow production builds to successfully complete even if
