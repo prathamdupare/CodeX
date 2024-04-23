@@ -72,7 +72,27 @@ export const getCourseById = async (id, userEmail) => {
 export const enrollCourse = async (courseId, userEmail) => {
   const mutationQuery = gql`
     mutation EnrollCourse {
-      createUserEnrollSchema(data: { userEmail: "", courseId: "" }) {
+      createUserEnrollSchema(data: { userEmail: "${userEmail}", courseId: "${courseId}" }) {
+        id
+      }
+    }
+  `;
+
+  try {
+    const result = await request(MASTER_URL, mutationQuery);
+    return result;
+  } catch (error) {
+    // Handle errors gracefully
+    console.error("Error fetching course properties:", error);
+    throw error; // Rethrow the error for handling further up the call stack if needed
+  }
+};
+
+export const publishCourse = async (id) => {
+  const mutationQuery = gql`
+    mutation EnrollCourse {
+      publishUserEnrollSchema(where: { id: "${id}" }) 
+      {
         id
       }
     }

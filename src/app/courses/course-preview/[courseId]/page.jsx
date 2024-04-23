@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 const CoursePreview = ({ params }) => {
   const [coursedetail, setCourseDetail] = useState([]);
 
+  const [userCourse, setUserCourse] = useState([]);
+
   const { user } = useUser();
   useEffect(() => {
     console.log(params.courseId);
@@ -22,6 +24,7 @@ const CoursePreview = ({ params }) => {
     ).then((res) => {
       console.log(res);
       setCourseDetail(res.courseList);
+      setUserCourse(res?.userEnrollSchemas[0]);
       console.log(coursedetail);
     });
   };
@@ -38,7 +41,10 @@ const CoursePreview = ({ params }) => {
           </div>
 
           <div className="my-2 md:mx-4 md:my-0">
-            <EnrollmentSection coursedetail={coursedetail} />
+            <EnrollmentSection
+              coursedetail={coursedetail}
+              userCourse={userCourse}
+            />
           </div>
         </div>
       </div>
