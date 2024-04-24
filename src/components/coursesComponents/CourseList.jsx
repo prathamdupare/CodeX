@@ -22,7 +22,7 @@ const CourseList = ({ courses }) => {
           className="flex items-center gap-3 flex-wrap  justify-center"
         >
           <Link href={`/courses/course-preview/${course.id}`}>
-            <Card className="flex w-[400px] h-[350px] border-2 cursor-pointer hover:border-purple-600 flex-col  p-4">
+            <Card className="flex w-[400px] h-[350px] border-2 cursor-pointer hover:border-green-600 flex-col  p-4">
               <Image
                 src={course.banner.url}
                 alt="courseImage"

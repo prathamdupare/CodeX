@@ -2,6 +2,7 @@
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { ModeToggle } from "./mode-toggle";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -12,11 +13,13 @@ const Navbar = () => {
           className="text-primary font-bold"
         >
           Code
-          <span className="text-pink-400 font-bold">X</span>
+          <span className="text-green-400 font-bold">X</span>
         </a>
       </div>
       <div className="flex flex-row items-center gap-4">
-        <Button>Dashboard</Button>
+        <Button>
+          <Link href="/">Dashboard</Link>
+        </Button>
         <ModeToggle />
 
         <SignedIn>

@@ -107,3 +107,33 @@ export const publishCourse = async (id) => {
     throw error; // Rethrow the error for handling further up the call stack if needed
   }
 };
+
+export const GetUserCourseList = async (userEmail) => {
+  const query = gql`
+    query UserCourseList {
+      userEnrollSchemas(where: { userEmail: "${userEmail}" }) {
+        courseList {
+          banner {
+            url
+          }
+          description
+          id
+          name
+          free
+          sourceCode
+          tag
+          totalChapters
+        }
+      }
+    }
+  `;
+
+  try {
+    const result = await request(MASTER_URL, query);
+    return result;
+  } catch (error) {
+    // Handle errors gracefully
+    console.error("Error fetching course list:", error);
+    throw error; // Rethrow the error for handling further up the call stack if needed
+  }
+};
