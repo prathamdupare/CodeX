@@ -50,30 +50,14 @@ export async function POST(req) {
       //
       //
 
+      EnrollCourse();
       const EnrollCourse = async () => {
         if (user) {
-          await enrollCourse(
-            coursedetail.id,
-            user.primaryEmailAddress.emailAddress,
-          ).then(async (res) => {
-            console.log("Enroll response : ", res);
-            if (res) {
-              await publishCourse(res?.createUserEnrollSchema?.id).then(
-                (result) => {
-                  console.log(result);
-                  if (result) {
-                    console.log("Course enrolled");
-                  }
-                },
-              );
-            }
-          });
+          await enrollCourse("test", user.primaryEmailAddress.emailAddress);
         } else {
           console.log("Please login to enroll");
         }
       };
-
-      redirect("/dashboard");
     }
 
     return NextResponse.json({
