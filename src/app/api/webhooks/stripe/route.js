@@ -44,7 +44,7 @@ export async function POST(req) {
     ) {
       // Redirect to the success page
       //
-      redirect(path, type);
+      redirect("/dashboard");
     }
 
     return NextResponse.json({
