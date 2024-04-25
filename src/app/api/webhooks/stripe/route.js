@@ -1,7 +1,6 @@
 import Stripe from "stripe";
 import { NextResponse, NextRequest } from "next/server";
-import { redirect } from "next/navigation";
-import { enrollCourse, publishCourse } from "@/app/services";
+import { enrollCourse } from "@/app/services";
 import { useUser } from "@clerk/nextjs";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -49,15 +48,8 @@ export async function POST(req) {
       // Redirect to the success page
       //
       //
-
-      EnrollCourse();
-      const EnrollCourse = async () => {
-        if (user) {
-          await enrollCourse("test", user.primaryEmailAddress.emailAddress);
-        } else {
-          console.log("Please login to enroll");
-        }
-      };
+      //
+      console.log("Payment Success");
     }
 
     return NextResponse.json({
