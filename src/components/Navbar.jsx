@@ -20,6 +20,14 @@ const Navbar = () => {
         <Button>
           <Link href="/">Dashboard</Link>
         </Button>
+
+        <Button className="flex items-center">
+          <Link href="/courses">Explore all courses </Link>
+        </Button>
+
+        <Button asChild className="flex items-center">
+          <Link href="/blog">Blog</Link>
+        </Button>
         <ModeToggle />
 
         <SignedIn>

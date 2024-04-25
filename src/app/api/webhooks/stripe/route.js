@@ -1,8 +1,10 @@
 import Stripe from "stripe";
 import { NextResponse, NextRequest } from "next/server";
+import { useRouter } from "next/navigation";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 export async function POST(req) {
+  const router = useRouter();
   const payload = await req.text();
   const res = JSON.parse(payload);
 
@@ -36,6 +38,14 @@ export async function POST(req) {
       JSON.stringify(res?.data?.object?.billing_details), // Billing details
       res?.data?.object?.currency, // Currency
     );
+
+    if (
+      event.type === "charge.succeeded" ||
+      event.type === "payment_intent.succeeded"
+    ) {
+      // Redirect to the success page
+      router.push("/success-page");
+    }
 
     return NextResponse.json({
       status: "sucess",
