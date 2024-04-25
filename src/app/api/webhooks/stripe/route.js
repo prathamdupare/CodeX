@@ -1,11 +1,15 @@
 import Stripe from "stripe";
 import { NextResponse, NextRequest } from "next/server";
 import { redirect } from "next/navigation";
+import { enrollCourse, publishCourse } from "@/app/services";
+import { useUser } from "@clerk/nextjs";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 export async function POST(req) {
   const payload = await req.text();
   const res = JSON.parse(payload);
+
+  const { user } = useUser();
 
   const sig = req.headers.get("Stripe-Signature");
 
@@ -44,6 +48,31 @@ export async function POST(req) {
     ) {
       // Redirect to the success page
       //
+      //
+
+      const EnrollCourse = async () => {
+        if (user) {
+          await enrollCourse(
+            coursedetail.id,
+            user.primaryEmailAddress.emailAddress,
+          ).then(async (res) => {
+            console.log("Enroll response : ", res);
+            if (res) {
+              await publishCourse(res?.createUserEnrollSchema?.id).then(
+                (result) => {
+                  console.log(result);
+                  if (result) {
+                    console.log("Course enrolled");
+                  }
+                },
+              );
+            }
+          });
+        } else {
+          console.log("Please login to enroll");
+        }
+      };
+
       redirect("/dashboard");
     }
 
