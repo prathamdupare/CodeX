@@ -22,22 +22,28 @@ const CourseList = ({ courses }) => {
           className="flex items-center gap-3 flex-wrap  justify-center"
         >
           <Link href={`/courses/course-preview/${course.id}`}>
-            <Card className="flex w-[400px] h-[350px] border-2 cursor-pointer hover:border-green-600 flex-col  p-4">
-              <Image
-                src={course.banner.url}
-                alt="courseImage"
-                width={300}
-                height={300}
-              />
-              <CardHeader>
-                <CardTitle className="text-[20px]">{course.name}</CardTitle>
-                <div className="flex gap-2">
-                  <Book size={20} />
-                  <Badge variant="outline">
+            <Card className="flex items-center w-[300px] h-[350px] border-2 cursor-pointer hover:border-green-600 flex-col p-4">
+              <div className=" flex items-center h-1/2">
+                <Image
+                  src={course.banner.url}
+                  alt="courseImage"
+                  width={300}
+                  height={300}
+                  className="object-cover"
+                />
+              </div>
+              <CardHeader className="mt-4">
+                <CardTitle className="text-lg">{course.name}</CardTitle>
+                <div className="flex gap-2 items-center my-2">
+                  <Badge className="flex p-2 gap-2" variant="outline">
+                    <Book size={20} />
                     {course.totalChapters} Chapters
                   </Badge>
+
+                  <Badge className="flex p-2 items-center justify-center gap-2">
+                    {course.free ? "Free" : "Paid"}
+                  </Badge>
                 </div>
-                <p>{course.free ? "Free" : "Paid"}</p>
               </CardHeader>
             </Card>
           </Link>

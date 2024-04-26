@@ -30,16 +30,24 @@ const ViewCouse = ({ params }) => {
   };
   return (
     course?.name && (
-      <div className="flex">
-        <div className="w-84 border p-2 shadow-sm h-screen z-50 rounded">
+      <div className="flex flex-col lg:flex-row ">
+        {" "}
+        {/* Use grid container */}
+        {/* Video Player */}
+        <div className=" w-full px-4 mt-2 flex flex-col items-center justify-center ">
+          {" "}
+          {/* Span 2 columns on medium screens and above */}
+          <FullVideoPlayer activeChapter={activeChapter} />
+        </div>
+        {/* Chapter Nav */}
+        <div className="md:col-span-1 px-4 h-full mx-2 border p-2 shadow-sm rounded">
+          {" "}
+          {/* Span 1 column on medium screens and above */}
           <ChapterNav
             course={course}
             userCourse={userCourse}
             setActiveChapter={(chapter) => setActiveChapter(chapter)}
           />
-        </div>
-        <div className="w-3/4 mx-8 ">
-          <FullVideoPlayer activeChapter={activeChapter} />
         </div>
       </div>
     )

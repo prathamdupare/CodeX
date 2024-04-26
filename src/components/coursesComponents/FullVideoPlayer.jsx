@@ -10,8 +10,6 @@ const FullVideoPlayer = ({ activeChapter }) => {
       <div className="w-full mx-2 rounded border">
         <video
           className="w-full"
-          width="1000"
-          height="250"
           controls
           controlsList="nodownload"
           key={activeChapter?.video?.url} // Ensure key is unique
@@ -20,7 +18,7 @@ const FullVideoPlayer = ({ activeChapter }) => {
         </video>
       </div>
       <div>
-        <h2>{activeChapter?.name}</h2>
+        <h2 className="p-4 font-bold text-lg">{activeChapter?.name}</h2>
       </div>
     </>
   );

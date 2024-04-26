@@ -23,7 +23,7 @@ const CoursePreview = ({ params }) => {
       user?.primaryEmailAddress?.emailAddress,
     ).then((res) => {
       setCourseDetails(res.courseList);
-      setUserCourse(res?.userEnrollSchemas);
+      setUserCourse(res?.userEnrollSchemas[0]);
 
       console.log("this is userenroll schemas ", res?.userEnrollSchemas);
     });
@@ -32,15 +32,15 @@ const CoursePreview = ({ params }) => {
   return (
     coursedetail?.name && (
       <div className="mx-3">
-        <div className="grid grid-cols-1 md:grid-cols-3">
-          <div className="col-span-2 p-5 border rounded-lg p-3 ">
+        <div className="flex gap-3 flex-col lg:flex-row ">
+          <div className="w-full p-1  md:p-5 border rounded-lg p-3 ">
             {coursedetail?.chapter[0] ? (
               <VideoPlayer videoUrl={coursedetail?.chapter[0].video.url} />
             ) : null}
             <CourseDetails coursedetail={coursedetail} />
           </div>
 
-          <div className="my-2 md:mx-4 md:my-0">
+          <div className="w-full ">
             <EnrollmentSection
               coursedetail={coursedetail}
               userCourse={userCourse}

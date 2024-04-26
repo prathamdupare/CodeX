@@ -7,6 +7,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import Navbar from "../components/Navbar";
 import { Button } from "@/components/ui/button";
 import { updateUser } from "@/lib/actions/user.actions";
+import { TestNavbar } from "@/components/TestNavbar";
 
 export default function RootLayout({ children }) {
   return (
@@ -19,8 +20,8 @@ export default function RootLayout({ children }) {
             enableSystem
             disableTransitionOnChange
           >
-            <Navbar />
-            <div className="pt-[70px]">{children}</div>
+            <TestNavbar />
+            <div className="pt-[50px]">{children}</div>
           </ThemeProvider>
         </body>
       </html>

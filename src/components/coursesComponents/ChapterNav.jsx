@@ -30,7 +30,7 @@ const ChapterNav = ({ course, userCourse, setActiveChapter }) => {
             >
               {activeIndex == index ? <PauseIcon /> : <Play className="h-5" />}
 
-              {chapter.name}
+              <div>{chapter.name}</div>
             </div>
           </div>
         ))}

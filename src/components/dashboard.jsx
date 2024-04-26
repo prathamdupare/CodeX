@@ -4,6 +4,8 @@ import { useUser } from "@clerk/nextjs";
 import { getUserCoursesIds, getCourseById } from "@/app/services";
 import { Button } from "./ui/button";
 
+import { Skeleton } from "@/components/ui/skeleton";
+
 import {
   Card,
   CardContent,
@@ -58,7 +60,14 @@ const dashboard = () => {
     <div className="flex flex-col gap-2 mx-7">
       <h2 className="text-20 font-bold">My Enrolled Courses</h2>
       {loading ? ( // Render loading state while data is being fetched
-        <div>Loading...</div>
+        <div>
+          <div className="flex flex-col mt-3 space-y-3">
+            <Skeleton className="h-[175px] w-[320px] rounded-xl" />
+            <div className="space-y-2">
+              <Skeleton className="h-4 w-[250px]" />
+            </div>
+          </div>
+        </div>
       ) : userCourseList.length > 0 ? (
         <div className="flex items-center gap-4">
           {userCourseList.map((course, index) => (
