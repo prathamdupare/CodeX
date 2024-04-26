@@ -13,7 +13,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-import { buttonVariants } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 import { ModeToggle } from "./mode-toggle";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { MenuIcon } from "lucide-react";
@@ -59,7 +59,10 @@ export const TestNavbar = () => {
               </SignedIn>
               <SignedOut>
                 {/* Signed out users get sign in button */}
-                <SignInButton />
+
+                <Button asChild>
+                  <SignInButton />
+                </Button>
               </SignedOut>
               <SheetTrigger className="px-2">
                 <div
@@ -133,7 +136,10 @@ export const TestNavbar = () => {
             </SignedIn>
             <SignedOut>
               {/* Signed out users get sign in button */}
-              <SignInButton />
+
+              <Button asChild>
+                <SignInButton />
+              </Button>
             </SignedOut>
           </div>
         </NavigationMenuList>

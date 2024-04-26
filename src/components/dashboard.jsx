@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useUser } from "@clerk/nextjs";
+import { SignInButton, SignedOut, useUser } from "@clerk/nextjs";
 import { getUserCoursesIds, getCourseById } from "@/app/services";
 import { Button } from "./ui/button";
 
@@ -59,6 +59,11 @@ const Dashboard = () => {
   return (
     user && (
       <div className="flex flex-col gap-2 mx-7">
+        <SignedOut>
+          {/* Signed out users get sign in button */}
+          Please sign in to view your enrolled courses..
+          <SignInButton />
+        </SignedOut>
         <h2 className="text-20 font-bold">My Enrolled Courses</h2>
         {loading ? ( // Render loading state while data is being fetched
           <div className="flex gap-4 flex-wrap">
