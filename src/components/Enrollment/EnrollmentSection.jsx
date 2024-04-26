@@ -3,7 +3,6 @@ import { Button } from "../ui/button";
 import { Card, CardFooter, CardHeader, CardTitle } from "../ui/card";
 import { useRouter } from "next/navigation";
 import { enrollCourse, publishCourse } from "@/app/services";
-import axios from "axios";
 
 const EnrollmentSection = ({ coursedetail, userCourse }) => {
   console.log(userCourse, coursedetail);
@@ -65,21 +64,19 @@ const EnrollmentSection = ({ coursedetail, userCourse }) => {
                 Continue
               </Button>
             </div>
-          ) : null}
-
-          {coursedetail.free && !userCourse?.courseId ? (
+          ) : (
             <div className="w-full">
-              <Button onClick={() => EnrollCourse()} className="w-full">
-                Enroll Now
-              </Button>
+              {coursedetail.free ? (
+                <Button onClick={EnrollCourse} className="w-full">
+                  Enroll Now
+                </Button>
+              ) : (
+                <Button onClick={EnrollCourse} className="w-full">
+                  Buy all courses for $5.99/month
+                </Button>
+              )}
             </div>
-          ) : !userCourse?.courseId ? (
-            <div className="w-full">
-              <Button onClick={handleEnrollCourse} className="w-full">
-                Buy all courses for $5.99/month
-              </Button>
-            </div>
-          ) : null}
+          )}
         </CardFooter>
       </Card>
     </div>

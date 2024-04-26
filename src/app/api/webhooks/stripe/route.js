@@ -1,14 +1,13 @@
+"use server";
+
 import Stripe from "stripe";
 import { NextResponse, NextRequest } from "next/server";
-import { enrollCourse } from "@/app/services";
-import { useUser } from "@clerk/nextjs";
+import { enrollCourse, publishCourse } from "@/app/services";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 export async function POST(req) {
   const payload = await req.text();
   const res = JSON.parse(payload);
-
-  const { user } = useUser();
 
   const sig = req.headers.get("Stripe-Signature");
 
@@ -41,15 +40,28 @@ export async function POST(req) {
       res?.data?.object?.currency, // Currency
     );
 
-    if (
-      event.type === "charge.succeeded" ||
-      event.type === "payment_intent.succeeded"
-    ) {
-      // Redirect to the success page
-      //
-      //
-      //
-      console.log("Payment Success");
+    console.log("====Payment successfull====");
+    console.log(
+      "User",
+      res?.data?.object?.billing_details?.email, // email
+    );
+
+    try {
+      await enrollCourse(
+        "clvfhvuug0kzq07pkoecnrfto",
+        res?.data?.object?.billing_details?.email || "",
+      ).then(async (res) => {
+        console.log("Enroll response : ", res);
+        if (res) {
+          await publishCourse(res?.createUserEnrollSchema?.id).then(
+            (result) => {
+              console.log(result);
+            },
+          );
+        }
+      });
+    } catch (error) {
+      console.log("Error", error);
     }
 
     return NextResponse.json({
