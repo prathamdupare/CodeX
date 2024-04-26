@@ -7,8 +7,12 @@ const ChapterNav = ({ course, userCourse, setActiveChapter }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    setActiveChapter(course?.chapter ? [0] : null);
-  }, []);
+    // Set the initial active chapter when the component mounts
+    if (course?.chapter && course?.chapter.length > 0) {
+      setActiveChapter(course.chapter[0]); // Set the first chapter as active
+    }
+  }, [course]); // Ensure useEffect runs when course or setActiveChapter changes
+
   return (
     <div>
       <div className="my-6">
@@ -24,11 +28,13 @@ const ChapterNav = ({ course, userCourse, setActiveChapter }) => {
                 setActiveChapter(chapter);
               }}
               className={` flex items-center gap-2 p-4 rounded cursor-pointer w-full items-start hover:bg-secondary ${
-                activeIndex == index ? "bg-green-800" : null
+                activeIndex === index
+                  ? "bg-green-800 text-white hover:bg-green-800"
+                  : null
               }`}
               variant="outline"
             >
-              {activeIndex == index ? <PauseIcon /> : <Play className="h-5" />}
+              {activeIndex === index ? <PauseIcon /> : <Play className="h-5" />}
 
               <div>{chapter.name}</div>
             </div>

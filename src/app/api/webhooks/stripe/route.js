@@ -29,36 +29,28 @@ export async function POST(req) {
 
     console.log(
       res?.data?.object?.billing_details?.email, // email
-      res?.data?.object?.amount, // amount
-      JSON.stringify(res), // payment info
-      res?.type, // type
-      String(timeString), // time
-      String(dateTime), // date
-      res?.data?.object?.receipt_email, // email
-      res?.data?.object?.receipt_url, // url
-      JSON.stringify(res?.data?.object?.payment_method_details), // Payment method details
-      JSON.stringify(res?.data?.object?.billing_details), // Billing details
-      res?.data?.object?.currency, // Currency
     );
 
     console.log("====Payment successfull====");
     console.log(
-      "User",
+      "User Email",
       res?.data?.object?.billing_details?.email, // email
     );
 
-    try {
+    /*
+    {
+
+     try {
       await enrollCourse(
         "clvfhvuug0kzq07pkoecnrfto",
         res?.data?.object?.billing_details?.email || "",
-      ).then(async (res) => {
-        console.log("Enroll response : ", res);
-        if (res) {
-          await publishCourse(res?.createUserEnrollSchema?.id).then(
+      ).then(async (resp) => {
+        console.log("Enroll response : ", resp);
+        if (resp) {
+          await publishCourse(resp?.createUserEnrollSchema?.id).then(
             (result) => {
               console.log(result);
             },
-            redirect(`/dashboard`),
           );
         }
       });
@@ -66,6 +58,9 @@ export async function POST(req) {
       console.log("Error", error);
     }
 
+    }
+
+*/
     return NextResponse.json({
       status: "sucess",
       event: event.type,

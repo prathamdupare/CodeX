@@ -62,9 +62,15 @@ const EnrollmentSection = ({ coursedetail, userCourse }) => {
                   Enroll Now
                 </Button>
               ) : (
-                <Button onClick={EnrollCourse} className="w-full">
-                  Buy all courses for $5.99/month
-                </Button>
+                <a
+                  href="https://buy.stripe.com/test_5kAg2X6bG8jD3EA8ww"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button onClick={EnrollCourse} className="w-full">
+                    Buy this courses for $5.99
+                  </Button>
+                </a>
               )}
             </div>
           )}

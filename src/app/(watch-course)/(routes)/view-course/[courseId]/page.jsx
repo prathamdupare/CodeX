@@ -29,7 +29,7 @@ const ViewCouse = ({ params }) => {
     });
   };
   return (
-    course?.name && (
+    course && (
       <div className="flex flex-col lg:flex-row ">
         {" "}
         {/* Use grid container */}
