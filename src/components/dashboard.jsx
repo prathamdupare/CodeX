@@ -59,11 +59,6 @@ const Dashboard = () => {
   return (
     user && (
       <div className="flex flex-col gap-2 mx-7">
-        <SignedOut>
-          {/* Signed out users get sign in button */}
-          Please sign in to view your enrolled courses..
-          <SignInButton />
-        </SignedOut>
         <h2 className="text-20 font-bold">My Enrolled Courses</h2>
         {loading ? ( // Render loading state while data is being fetched
           <div className="flex gap-4 flex-wrap">
@@ -82,7 +77,7 @@ const Dashboard = () => {
             </div>
           </div>
         ) : userCourseList.length > 0 ? (
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 flex-wrap">
             {userCourseList.map((course, index) => (
               <Link
                 href={`/courses/course-preview/${course.id}`}
