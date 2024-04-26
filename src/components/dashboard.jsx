@@ -61,9 +61,16 @@ const Dashboard = () => {
       <div className="flex flex-col gap-2 mx-7">
         <h2 className="text-20 font-bold">My Enrolled Courses</h2>
         {loading ? ( // Render loading state while data is being fetched
-          <div>
+          <div className="flex gap-4 flex-wrap">
             <div className="flex flex-col mt-3 space-y-3">
-              <Skeleton className="h-[175px] w-[320px] rounded-xl" />
+              <Skeleton className="h-[155px] w-[200px] md:h-[175px] md:w-[320px] rounded-xl" />
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-[250px]" />
+              </div>
+            </div>
+
+            <div className="flex flex-col mt-3 space-y-3">
+              <Skeleton className="h-[155px] w-[200px] md:h-[175px] md:w-[320px] rounded-xl" />
               <div className="space-y-2">
                 <Skeleton className="h-4 w-[250px]" />
               </div>
