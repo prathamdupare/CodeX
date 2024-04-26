@@ -7,7 +7,7 @@ import { useUser } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 
 const CoursePreview = ({ params }) => {
-  const [coursedetail, setCourseDetail] = useState([]);
+  const [coursedetail, setCourseDetails] = useState([]);
 
   const [userCourse, setUserCourse] = useState([]);
 
@@ -22,10 +22,10 @@ const CoursePreview = ({ params }) => {
       params.courseId,
       user?.primaryEmailAddress?.emailAddress,
     ).then((res) => {
-      console.log(res);
-      setCourseDetail(res.courseList);
-      setUserCourse(res?.userEnrollSchemas[0]);
-      console.log(coursedetail);
+      setCourseDetails(res.courseList);
+      setUserCourse(res?.userEnrollSchemas);
+
+      console.log("this is userenroll schemas ", res?.userEnrollSchemas);
     });
   };
 

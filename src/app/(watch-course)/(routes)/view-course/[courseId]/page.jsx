@@ -22,7 +22,7 @@ const ViewCouse = ({ params }) => {
       params?.courseId,
       user.primaryEmailAddress.emailAddress,
     ).then((res) => {
-      console.log(res);
+      console.log("maybe this is the onee", res);
 
       setCourse(res.courseList);
       setUserCourse(res.userEnrollSchemas);

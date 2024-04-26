@@ -3,6 +3,7 @@
 import Stripe from "stripe";
 import { NextResponse, NextRequest } from "next/server";
 import { enrollCourse, publishCourse } from "@/app/services";
+import { redirect } from "next/navigation";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 export async function POST(req) {
@@ -57,6 +58,7 @@ export async function POST(req) {
             (result) => {
               console.log(result);
             },
+            redirect(`/dashboard`),
           );
         }
       });

@@ -14,11 +14,9 @@ const EnrollmentSection = ({ coursedetail, userCourse }) => {
         coursedetail.id,
         user.primaryEmailAddress.emailAddress,
       ).then(async (res) => {
-        console.log("Enroll response : ", res);
         if (res) {
           await publishCourse(res?.createUserEnrollSchema?.id).then(
             (result) => {
-              console.log(result);
               if (result) {
                 router.push(`/view-course/${coursedetail.id}`);
               }
@@ -28,20 +26,6 @@ const EnrollmentSection = ({ coursedetail, userCourse }) => {
       });
     } else {
       router.push("/sign-in");
-      console.log("Please login to enroll");
-    }
-  };
-
-  const handleEnrollCourse = async () => {
-    try {
-      // Create checkout session on your server
-      // Add any other relevant data for your session
-
-      // Redirect user to checkout page
-      router.push(response.data.sessionUrl);
-    } catch (error) {
-      console.error("Error creating checkout session:", error);
-      // Handle error appropriately
     }
   };
   return (
@@ -64,19 +48,21 @@ const EnrollmentSection = ({ coursedetail, userCourse }) => {
                 Continue
               </Button>
             </div>
-          ) : (
+          ) : null}
+
+          {coursedetail.free && !userCourse?.courseId ? (
             <div className="w-full">
-              {coursedetail.free ? (
-                <Button onClick={EnrollCourse} className="w-full">
-                  Enroll Now
-                </Button>
-              ) : (
-                <Button onClick={EnrollCourse} className="w-full">
-                  Buy all courses for $5.99/month
-                </Button>
-              )}
+              <Button onClick={() => EnrollCourse()} className="w-full">
+                Enroll Now
+              </Button>
             </div>
-          )}
+          ) : !userCourse?.courseId ? (
+            <div className="w-full">
+              <Button onClick={() => EnrollCourse()} className="w-full">
+                Buy all courses for $5.99/month
+              </Button>
+            </div>
+          ) : null}
         </CardFooter>
       </Card>
     </div>

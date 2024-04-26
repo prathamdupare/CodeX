@@ -29,6 +29,25 @@ export const getCourseList = async () => {
   }
 };
 
+export const getUserCoursesIds = async (userEmail) => {
+  const query = gql`
+    query UserCourseList {
+      userEnrollSchemas(where: { userEmail: "${userEmail}" }) {
+        courseId
+      }
+    }
+  `;
+
+  try {
+    const result = await request(MASTER_URL, query);
+    return result;
+  } catch (error) {
+    // Handle errors gracefully
+    console.error("Error fetching course properties:", error);
+    throw error; // Rethrow the error for handling further up the call stack if needed
+  }
+};
+
 export const getCourseById = async (id, userEmail) => {
   const query = gql`
     query course {
@@ -44,6 +63,9 @@ export const getCourseById = async (id, userEmail) => {
           }
         }
         description
+        banner {
+          url
+        }
         name
         id
         free
