@@ -8,10 +8,15 @@ import Navbar from "../components/Navbar";
 import { Button } from "@/components/ui/button";
 import { updateUser } from "@/lib/actions/user.actions";
 import { TestNavbar } from "@/components/TestNavbar";
+import { dark } from "@clerk/themes";
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+      }}
+    >
       <html lang="en">
         <body className={`${inter.className} bg-background`}>
           <ThemeProvider

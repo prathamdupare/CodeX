@@ -17,7 +17,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
-const dashboard = () => {
+const Dashboard = () => {
   const { user } = useUser();
   const [loading, setLoading] = useState(true);
   const [userCourseList, setUserCourseList] = useState([]);
@@ -57,43 +57,48 @@ const dashboard = () => {
   }, [user]);
 
   return (
-    <div className="flex flex-col gap-2 mx-7">
-      <h2 className="text-20 font-bold">My Enrolled Courses</h2>
-      {loading ? ( // Render loading state while data is being fetched
-        <div>
-          <div className="flex flex-col mt-3 space-y-3">
-            <Skeleton className="h-[175px] w-[320px] rounded-xl" />
-            <div className="space-y-2">
-              <Skeleton className="h-4 w-[250px]" />
+    user && (
+      <div className="flex flex-col gap-2 mx-7">
+        <h2 className="text-20 font-bold">My Enrolled Courses</h2>
+        {loading ? ( // Render loading state while data is being fetched
+          <div>
+            <div className="flex flex-col mt-3 space-y-3">
+              <Skeleton className="h-[175px] w-[320px] rounded-xl" />
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-[250px]" />
+              </div>
             </div>
           </div>
-        </div>
-      ) : userCourseList.length > 0 ? (
-        <div className="flex items-center gap-4">
-          {userCourseList.map((course, index) => (
-            <Link href={`/courses/course-preview/${course.id}`} key={course.id}>
-              <Card className="hover:border-green-600">
-                <CardHeader>
-                  <Image
-                    src={course.bannerUrl}
-                    alt="courseImage"
-                    width={300}
-                    height={300}
-                  />
-                </CardHeader>
-                <CardContent>
-                  <p>{course.name}</p>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
-          <Button>+</Button>
-        </div>
-      ) : (
-        <div>There are no courses</div>
-      )}
-    </div>
+        ) : userCourseList.length > 0 ? (
+          <div className="flex items-center gap-4">
+            {userCourseList.map((course, index) => (
+              <Link
+                href={`/courses/course-preview/${course.id}`}
+                key={course.id}
+              >
+                <Card className="hover:border-green-600">
+                  <CardHeader>
+                    <Image
+                      src={course.bannerUrl}
+                      alt="courseImage"
+                      width={300}
+                      height={300}
+                    />
+                  </CardHeader>
+                  <CardContent>
+                    <p>{course.name}</p>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+            <Button>+</Button>
+          </div>
+        ) : (
+          <div>There are no courses</div>
+        )}
+      </div>
+    )
   );
 };
 
-export default dashboard;
+export default Dashboard;

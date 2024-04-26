@@ -24,7 +24,7 @@ const routeList = [
     label: "Dashboard",
   },
   {
-    href: "codex.fosspage.com/",
+    href: "https://codex.fosspage.com/",
     label: "Homepage",
   },
   {
