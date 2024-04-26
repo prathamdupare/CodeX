@@ -101,7 +101,16 @@ const Dashboard = () => {
             <Button>+</Button>
           </div>
         ) : (
-          <div>There are no courses</div>
+          <div className="flex flex-col gap-2 h-full w-screen items-center justify-center">
+            <div className="text-[30px] items-start py-3">
+              Welcome to {""}
+              <span className="font-bold text-green-600">CodeX</span>, explore
+              and add new courses!
+            </div>
+            <Link href="/courses">
+              <Button>Enroll Courses +</Button>
+            </Link>
+          </div>
         )}
       </div>
     )
