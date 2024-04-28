@@ -34,13 +34,13 @@ const ViewCouse = ({ params }) => {
         {" "}
         {/* Use grid container */}
         {/* Video Player */}
-        <div className=" w-full px-4 mt-2 flex flex-col items-center justify-center ">
+        <div className=" lg:w-[75%]  px-4 mt-2 flex flex-col items-center justify-center ">
           {" "}
           {/* Span 2 columns on medium screens and above */}
           <FullVideoPlayer activeChapter={activeChapter} />
         </div>
         {/* Chapter Nav */}
-        <div className="md:col-span-1 px-4 h-full mx-2 border p-2 shadow-sm rounded">
+        <div className="  m-2 lg:w-[25%] md:col-span-1 px-4 h-full mx-2 border p-2 shadow-sm rounded">
           {" "}
           {/* Span 1 column on medium screens and above */}
           <ChapterNav
