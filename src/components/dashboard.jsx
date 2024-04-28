@@ -98,7 +98,10 @@ const Dashboard = () => {
                 </Card>
               </Link>
             ))}
-            <Button>+</Button>
+
+            <Link asChild href="/courses">
+              <Button>+</Button>
+            </Link>
           </div>
         ) : (
           <div className="flex flex-col gap-2 h-full w-screen items-center justify-center">

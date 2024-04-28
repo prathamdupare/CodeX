@@ -70,6 +70,12 @@ const EnrollmentSection = ({ coursedetail, userCourse }) => {
                   <Button onClick={EnrollCourse} className="w-full">
                     Buy this courses for $5.99
                   </Button>
+
+                  <div className=" text-gray-500 p-2">
+                    <span className="text-red-400">Note</span> {": "}
+                    Use this test card code for payment :{" "}
+                    <span className="text-red-400">4000003560000123</span>
+                  </div>
                 </a>
               )}
             </div>
