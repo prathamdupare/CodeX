@@ -29,7 +29,7 @@ const ChapterNav = ({ course, userCourse, setActiveChapter }) => {
               }}
               className={` flex items-center gap-2 p-4 rounded cursor-pointer w-full items-start hover:bg-secondary ${
                 activeIndex === index
-                  ? "bg-green-800 text-white hover:bg-orange-600 hover:text-secondary"
+                  ? "bg-green-800 text-white hover:bg-yellow-500 hover:text-secondary"
                   : null
               }`}
               variant="outline"
