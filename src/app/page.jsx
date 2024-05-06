@@ -10,6 +10,8 @@ export default async function Home() {
           <SignedOut>
             {/* Signed out users get sign in button */}
 
+            <p>Welcome to CodeX.</p>
+
             <p className="font-bold">
               Please sign in to view your enrolled courses..
             </p>
